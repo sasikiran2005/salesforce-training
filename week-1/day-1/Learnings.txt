@@ -1,0 +1,6 @@
+-  CRM and how Companies use Salesforce to improve their Customer relationship management.
+- what a salesforce Developer does
+- Inteface of salesforce
+- Objects and Records(accounts ,leads, contacts)
+- adding contacts , accounts and oppurtunities data into sales cloud as mentioned in trailhead course 
+- 

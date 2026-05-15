@@ -48,26 +48,30 @@ class EnrollmentProcessor {
 Example b — Branch Seat Vacancy Check (pseudocode):
 
 ```
-class BranchSeatService {
-  method checkVacancy(branchId, courseId) {
-    branch = query Branch__c where Id = branchId
-    course = query Course__c where Id = courseId
-    enrollmentCount = count Enrollment__c where Branch__c = branchId and Course__c = courseId and Status__c = 'Enrolled'
-    availableSeats = course.Total_Seats__c - enrollmentCount
+public class SeatCheck {
 
-    if (availableSeats > 0) {
-      return {
-        isVacant: true,
-        availableSeats: availableSeats,
-        message: 'Seats are available'
-      }
+    public static void checkSeats(Id courseId) {
+
+        // Get course details from database
+        Course__c course = [
+            SELECT Name, Total_Seats__c FROM Course__c WHERE Id = :courseId LIMIT 1 ];
+
+        // Count enrolled students
+        Integer enrolledStudents = [ SELECT COUNT() FROM Student__c WHERE Course__c = :courseId ];
+
+        // Calculate available seats
+        Integer availableSeats = course.Total_Seats__c - enrolledStudents;
+
+        // Check seats
+        if(availableSeats > 0) {
+             System.debug('Seats Available');
+            System.debug('Available Seats: ' + availableSeats);
+             } else {
+
+            System.debug('No Seats Available');
+
+        }
     }
-    return {
-      isVacant: false,
-      availableSeats: 0,
-      message: 'No seats available in this branch for the selected course'
-    }
-  }
 }
 ```
 

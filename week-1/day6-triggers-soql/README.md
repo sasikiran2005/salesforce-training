@@ -91,20 +91,14 @@ Example:
 # 6. Query Examples
 
 - Find students registered this month
-  
-  ```
+
 - Find faculty members in Computer Science department
- 
-  ```
+
 - Find students with highest marks
 
-  ```
 - Find courses with no assigned faculty
  
-  ```
 - Find students absent for more than 5 days
-
-  ```
 
 ---
 
